@@ -18,10 +18,13 @@ public class Bank {
         )));
 
         accounts.put(2000, new PremiumAccount(new AccountData(
-                2000, "Example 2", "example2@gmail.com", 200
+                2000, "Example 2", "premiumaccount2@gmail.com", 200
         )));
         accounts.put(3000, new EmployeeAccount(new AccountData(
-                3000, "Example 3", "example3@gmail.com", 800
+                3000, "Example 3", "employee@gmail.com", 800
+        )));
+        accounts.put(4000, new EmployeeAccount(new AccountData(
+                4000, "Example 3", "retirementaccount@gmail.com", 100
         )));
     }
 
