@@ -55,21 +55,35 @@ public class CashMachineApp extends Application {
         accountPane.getChildren().add(balanceText);
 
 
-
-
-
-
-
-
         Button btnSubmit = new Button("Set Account ID");
+        Button btnDeposit = new Button("Deposit");
+        Button btnWithdraw = new Button("Withdraw");
+        Button btnExit = new Button("Exit");
+
+
         btnSubmit.setOnAction(e -> {
             int id = Integer.parseInt(field.getText());
             cashMachine.login(id);
+            if (cashMachine.getAccountData()==null){
+                System.out.println("Ya Mamorgan");
+                btnDeposit.setDisable(true);
+                btnWithdraw.setDisable(true);
+                btnExit.setDisable(true);
 
+            } else {
+                btnDeposit.setDisable(false);
+                btnWithdraw.setDisable(false);
+                btnExit.setDisable(false);
+                idText.setText(String.valueOf(cashMachine.getAccountData().getId()));
+                nameText.setText(cashMachine.getAccountData().getName());
+                nameText.setStyle("-fx-text-inner-color: blue;");
+                emailText.setText(cashMachine.getAccountData().getEmail());
+                balanceText.setText(String.valueOf(cashMachine.getAccountData().getBalance()));
+            }
             areaInfo.setText(cashMachine.toString());
         });
 
-        Button btnDeposit = new Button("Deposit");
+
         btnDeposit.setOnAction(e -> {
             int amount = Integer.parseInt(field.getText());
             cashMachine.deposit(amount);
@@ -77,7 +91,7 @@ public class CashMachineApp extends Application {
             areaInfo.setText(cashMachine.toString());
         });
 
-        Button btnWithdraw = new Button("Withdraw");
+
         btnWithdraw.setOnAction(e -> {
             int amount = Integer.parseInt(field.getText());
             cashMachine.withdraw(amount);
@@ -85,7 +99,7 @@ public class CashMachineApp extends Application {
             areaInfo.setText(cashMachine.toString());
         });
 
-        Button btnExit = new Button("Exit");
+
         btnExit.setOnAction(e -> {
             cashMachine.exit();
 
