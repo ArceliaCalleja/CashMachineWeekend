@@ -1,5 +1,6 @@
 package rocks.zipcode.atm;
 
+import javafx.scene.control.Label;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -10,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.layout.FlowPane;
+
+import javax.xml.soap.Text;
+import java.util.Scanner;
 
 /**
  * @author ZipCodeWilmington
@@ -24,6 +28,38 @@ public class CashMachineApp extends Application {
         vbox.setPrefSize(600, 600);
 
         TextArea areaInfo = new TextArea();
+
+        TextField idText=new TextField();
+        TextField nameText=new TextField();
+        TextField emailText=new TextField();
+        TextField balanceText=new TextField();
+
+        Label idLabel=new Label("ID: ");
+        Label nameLabel=new Label ("Name : ");
+        Label emailLabel=new Label("Email: ");
+        Label balanceLabel=new Label("Balance: ");
+
+
+        VBox accountPane=new VBox();
+
+        accountPane.getChildren().add(idLabel);
+        accountPane.getChildren().add(idText);
+
+        accountPane.getChildren().add(nameLabel);
+        accountPane.getChildren().add(nameText);
+
+        accountPane.getChildren().add(emailLabel);
+        accountPane.getChildren().add(emailText);
+
+        accountPane.getChildren().add(balanceLabel);
+        accountPane.getChildren().add(balanceText);
+
+
+
+
+
+
+
 
         Button btnSubmit = new Button("Set Account ID");
         btnSubmit.setOnAction(e -> {
@@ -63,6 +99,7 @@ public class CashMachineApp extends Application {
         flowpane.getChildren().add(btnWithdraw);
         flowpane.getChildren().add(btnExit);
         vbox.getChildren().addAll(field, flowpane, areaInfo);
+        vbox.getChildren().add(accountPane);
         return vbox;
     }
 
